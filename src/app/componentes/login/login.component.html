@@ -1,0 +1,52 @@
+<section style="background-color: transparent; height: 100vh">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <label for="title" class="labelTitle">ThunderGames</label>
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div
+          class="card shadow-2-strong border border-primary border-5 rounded custom-border-dotted"
+        >
+          <div class="card-body p-5 text-center">
+            <h3 class="form-label">Iniciar Sesion</h3>
+
+            <div data-mdb-input-init class="form-outline mb-4">
+              <input
+                type="email"
+                id="typeEmailX-2"
+                class="form-control form-control-lg"
+                [(ngModel)]="email"
+                name="email"
+                placeholder="Ingrese su email"
+              />
+              <label class="form-label" for="typeEmailX-2">Email</label>
+            </div>
+
+            <div data-mdb-input-init class="form-outline mb-4">
+              <input
+                type="password"
+                id="typePasswordX-2"
+                class="form-control form-control-lg"
+                [(ngModel)]="password"
+                name="password"
+                placeholder="Ingrese su contraseña"
+              />
+              <label class="form-label" for="typePasswordX-2">Contraseña</label>
+            </div>
+
+            <!-- Checkbox -->
+            <button
+              data-mdb-button-init
+              data-mdb-ripple-init
+              class="btnInicioSesion"
+              type="button"
+              (click)="onLogin()"
+            >
+              Iniciar sesión
+            </button>
+            <hr class="my-4" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

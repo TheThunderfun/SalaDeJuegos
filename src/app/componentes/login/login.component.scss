@@ -1,0 +1,88 @@
+
+@font-face {
+  font-family: 'Crang';
+  src: url('../../../assets/fonts/Crang.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+.login-container {
+  display: flex;
+  height: 100vh;
+  font-family: "Crang",sans-serif;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+
+
+
+  font-size: 2rem; /* Ajusta el tamaño del texto según tus necesidades */
+  font-weight: bold;
+  color: transparent;
+  text-shadow:
+    1px 1px 0 #0947cea8, /* Borde derecho */
+    -1px -1px 0 #00f7ff, /* Borde izquierdo */
+    1px -1px 0 #0400ff, /* Borde inferior */
+    -1px 1px 0 #0026ff; /* Borde superior */
+}
+
+.labelLogin{
+  display: block;
+}
+.labelTitle{
+  display: flex;
+  font-family: "Crang",sans-serif;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+
+  font-size: 3rem; /* Ajusta el tamaño del texto según tus necesidades */
+  font-weight: bold;
+  color: transparent;
+  text-shadow:
+    1px 1px 0 #0947cea8, /* Borde derecho */
+    -1px -1px 0 #00f7ff, /* Borde izquierdo */
+    1px -1px 0 #0400ff, /* Borde inferior */
+    -1px 1px 0 #0026ff; /* Borde superior */
+  position: absolute;
+  top: 1%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 2rem;
+}
+
+.form-label{
+  font-size: 1.5rem;
+  font-family: "Crang",sans-serif;
+  color: transparent;
+  font-weight: bold;
+  text-shadow:
+  1px 1px 0 #0947cea8, /* Borde derecho */
+  -1px -1px 0 #00f7ff, /* Borde izquierdo */
+  1px -1px 0 #0400ff, /* Borde inferior */
+  -1px 1px 0 #0026ff; /* Borde superior */
+}
+.btnInicioSesion{
+  font-family: "Crang",sans-serif;
+
+}
+
+
+.letraLogin{
+  font-size: 1rem;
+}
+
+.card-body{
+  background-color:#0d0d2b;
+  display: flex;
+  font-family: "Crang",sans-serif;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  padding: 1rem;
+}
+.custom-card {
+  border-radius: 100rem;
+}
