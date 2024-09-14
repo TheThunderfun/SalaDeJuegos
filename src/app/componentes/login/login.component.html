@@ -1,13 +1,13 @@
-<section style="background-color: transparent; height: 100vh">
-  <div class="container py-5 h-100">
+<h1 class="labelTitle text-center">ThunderGames</h1>
+<section>
+  <div class="container h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
-      <label for="title" class="labelTitle">ThunderGames</label>
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
         <div
-          class="card shadow-2-strong border border-primary border-5 rounded custom-border-dotted"
+          class="card shadow-2-strong border border-info border-5 rounded custom-border-dotted"
         >
-          <div class="card-body p-5 text-center">
-            <h3 class="form-label">Iniciar Sesion</h3>
+          <div class="card-body text-center">
+            <h3 class="FormTitle">Iniciar Sesion</h3>
 
             <div data-mdb-input-init class="form-outline mb-4">
               <input
@@ -37,11 +37,21 @@
             <button
               data-mdb-button-init
               data-mdb-ripple-init
-              class="btnInicioSesion"
+              class="btnInicioSesion btn btn-primary mx-2"
               type="button"
               (click)="onLogin()"
             >
               Iniciar sesión
+            </button>
+
+            <button
+              data-mdb-button-init
+              data-mdb-ripple-init
+              class="btnRegistro btn btn-danger mx-2"
+              type="button"
+              (click)="goToRegistro()"
+            >
+              Registro
             </button>
             <hr class="my-4" />
           </div>
