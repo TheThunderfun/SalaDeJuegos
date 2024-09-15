@@ -7,7 +7,37 @@ body {
   background-size: cover; /* Ajusta la imagen para cubrir toda el área */
   background-position: center; /* Centra la imagen */
   background-repeat: no-repeat; /* Evita que la imagen se repita */
-  //overflow: hidden;
+  overflow: hidden;
   min-height: 100vh;
+}
+
+@font-face {
+  font-family:'clacon' ;
+  src: url('assets/fonts/clacon2.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.swal2-popup {
+  font-family:"clacon" ;
+  width: 300px;
+  max-width: 100%;
+  box-sizing: border-box;
+  color: white;
+  background-color: #363b42;
+}
+
+.swal2-confirm {
+  background-color: #00d9ff !important; /* Cambia el color de fondo */
+  color: white !important;               /* Cambia el color del texto */
+  border: none !important;               /* Elimina el borde */
+  border-radius: 5px !important;         /* Ajusta el radio de los bordes */
+  padding: 10px 20px !important;         /* Ajusta el tamaño del botón */
+  font-size: 16px !important;            /* Cambia el tamaño de la fuente */
+}
+
+/* Efecto hover para el botón de confirmación */
+.swal2-confirm:hover {
+  background-color: #06aecc !important; /* Cambia el color cuando se pasa el mouse */
 }
 

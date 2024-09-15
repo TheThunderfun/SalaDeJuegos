@@ -5,12 +5,22 @@
   font-weight: normal;
   font-style: normal;
 }
+
+.body{
+  overflow: visible;
+}
+
+@font-face {
+  font-family:'clacon' ;
+  src: url('../../../assets/fonts/clacon2.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .labelTitle{
-  display: flex;
+
   font-family: "Crang",sans-serif;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+
   position: relative;
 
   font-size: 3rem; /* Ajusta el tamaño del texto según tus necesidades */
@@ -21,9 +31,56 @@
     -1px -1px 0 #00f7ff, /* Borde izquierdo */
     1px -1px 0 #0400ff, /* Borde inferior */
     -1px 1px 0 #0026ff; /* Borde superior */
-  position: absolute;
   top: 1%;
-  left: 50%;
-  transform: translateX(-50%);
+
+  margin-left: auto;
+  margin-right: auto;
   padding: 2rem;
+}
+
+// .card-body{
+//   background-color: grey;
+//   font-size: 1rem;
+//   font-family: "clacon",sans-serif;
+//   color: #00d9ff;
+// }
+
+// .card-img-top {
+//   background:gray;
+//   width: 70%; /* O puedes usar un valor fijo como 150px */
+//   max-width: 100px; /* Establece un máximo ancho para la imagen */
+//   height: auto; /* Mantiene la proporción de la imagen */
+// }
+
+.card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: grey;
+}
+
+.card-img-top {
+  width: 15%;
+  height: auto;
+}
+
+.card-body {
+  width: auto;
+  padding: auto;
+  text-align: left;
+  background-color: grey;
+  font-size: 0.875em;
+  font-family: "clacon",sans-serif;
+  color: #00d9ff;
+
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  font-size: 1rem;
 }

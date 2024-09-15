@@ -1,0 +1,67 @@
+.header-container {
+  display: flex;
+  justify-content: space-between; /* Separa logo y comboBox */
+  align-items: center; /* Alinea los elementos verticalmente */
+  padding: 10px 20px;
+  background-color: transparent;
+}
+
+@font-face {
+  font-family: 'clacon';
+  src: url('../../../assets/fonts/clacon2.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.logo img {
+  height: 70px;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: center; /* Centra los botones en su contenedor */
+  gap: 15px; /* Espacio entre botones */
+  flex-grow: 1; /* El contenedor de botones ocupa el espacio restante */
+}
+
+.nav-btn {
+  font-family: "clacon";
+  background-color: #191e27;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.nav-btn:hover {
+  background-color: #161e68;
+}
+
+.profileComboBox {
+  position: absolute; /* Esto hace que esté fuera del flujo de layout */
+  right: 20px;
+  font-family: "clacon";
+  background-color: #191e27;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.profileSelect {
+  appearance: none;
+  color: white;
+  background: #191e27;
+  border: none;
+  font-size: 16px;
+  width: 100%;
+  cursor: pointer;
+  text-align: center;
+}
+
+.profileSelect:focus {
+  outline: none;
+}

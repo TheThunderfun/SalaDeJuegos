@@ -5,6 +5,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { key } from '../../../environmentConfig';
 import { addDoc, collection, Firestore } from '@angular/fire/firestore';
 import { Subscription } from 'rxjs';
+import Swal from 'sweetalert2';
+import { Auth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-login',
@@ -21,36 +23,37 @@ export class LoginComponent {
 
   email: string = '';
   password: string = '';
-  private fireBaseUrl = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${key}`;
   constructor(
     private http: HttpClient,
     private router: Router,
-    private firestore: Firestore
+    private firestore: Firestore,
+    public auth: Auth
   ) {}
 
-  onLogin() {
-    if (this.email && this.password) {
-      const body = {
-        email: this.email,
-        password: this.password,
-        returnSecureToken: true,
-      };
-      console.log(this.email, this.password);
-      this.http.post(this.fireBaseUrl, body).subscribe(
-        (response) => {
-          console.log('Login exitoso', response);
-          alert(`Se inició sesión correctamente con el email: ${this.email}`);
-          this.Login();
-          //this.router.navigate(['/home']);
-        },
-        (error) => {
-          console.error('Error en el login', error);
-          alert(`Email o contrasenia invalidos.`);
-        }
+  async onLogin() {
+    try {
+      const res = await signInWithEmailAndPassword(
+        this.auth,
+        this.email,
+        this.password
       );
-    } else {
-      console.log('Ingrese usuario y contrasenia validos');
+
+      await this.showAlert(
+        'Inicio de sesión exitoso',
+        'Aceptar',
+        `Se inició sesión correctamente con el email: ${this.email}`,
+        'success'
+      );
+
+      this.router.navigate(['/home']);
+    } catch (e) {
+      console.log(e);
     }
+  }
+  logOut() {
+    signOut(this.auth).then(() => {
+      console.log(this.auth.currentUser?.email);
+    });
   }
 
   Login() {
@@ -60,5 +63,29 @@ export class LoginComponent {
 
   goToRegistro() {
     this.router.navigate(['/signup']);
+  }
+
+  accesoRapido1() {
+    this.email = 'usuarioAnonimo1@gmail.com';
+    this.password = '123456';
+  }
+
+  accesoRapido2() {
+    this.email = 'usuarioAnonimo2@gmail.com';
+    this.password = '123456';
+  }
+
+  async showAlert(
+    strTitle: string,
+    strButton: string,
+    strtext: string,
+    strIcon: string
+  ) {
+    await Swal.fire({
+      title: strTitle,
+      text: strtext,
+      icon: strIcon as any,
+      confirmButtonText: strButton,
+    });
   }
 }

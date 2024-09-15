@@ -33,26 +33,50 @@
               <label class="form-label" for="typePasswordX-2">Contraseña</label>
             </div>
 
-            <!-- Checkbox -->
-            <button
-              data-mdb-button-init
-              data-mdb-ripple-init
-              class="btnInicioSesion btn btn-primary mx-2"
-              type="button"
-              (click)="onLogin()"
-            >
-              Iniciar sesión
-            </button>
+            <div class="d-flex justify-content-center mb-4">
+              <button
+                data-mdb-button-init
+                data-mdb-ripple-init
+                class="btnInicioSesion btn btn-primary mx-2"
+                type="button"
+                (click)="onLogin()"
+              >
+                Iniciar sesión
+              </button>
 
-            <button
-              data-mdb-button-init
-              data-mdb-ripple-init
-              class="btnRegistro btn btn-danger mx-2"
-              type="button"
-              (click)="goToRegistro()"
-            >
-              Registro
-            </button>
+              <button
+                data-mdb-button-init
+                data-mdb-ripple-init
+                class="btnRegistro btn btn-danger mx-2"
+                type="button"
+                (click)="goToRegistro()"
+              >
+                Registro
+              </button>
+            </div>
+
+            <div class="d-flex justify-content-center">
+              <button
+                data-mdb-button-init
+                data-mdb-ripple-init
+                class="btnAccesoRapido1 btn btn-secondary mx-2"
+                type="button"
+                (click)="accesoRapido1()"
+              >
+                Acceso Rápido 1
+              </button>
+
+              <button
+                data-mdb-button-init
+                data-mdb-ripple-init
+                class="btnAccesoRapido2 btn btn-secondary mx-2"
+                type="button"
+                (click)="accesoRapido2()"
+              >
+                Acceso Rápido 2
+              </button>
+            </div>
+
             <hr class="my-4" />
           </div>
         </div>

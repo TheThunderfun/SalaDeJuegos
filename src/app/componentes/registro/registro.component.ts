@@ -38,8 +38,8 @@ export class RegistroComponent {
         (response) => {
           console.log('Registro exitoso', response);
           alert(`Registro exitoso con el email: ${this.email}`);
-          this.guardarUsuario('1');
-          this.router.navigate(['/login']);
+          this.guardarUsuario();
+          this.router.navigate(['/home']);
         },
         (error) => {
           console.error('Error en el registro', error);
@@ -51,12 +51,11 @@ export class RegistroComponent {
     }
   }
 
-  guardarUsuario(userId: string) {
+  guardarUsuario() {
     const userRef = collection(this.firestore, 'usuarios');
 
     // Datos a guardar
     const userData = {
-      id: userId,
       nombre: this.nombre,
       apellido: this.apellido,
       email: this.email,

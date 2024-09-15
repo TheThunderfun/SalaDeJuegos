@@ -5,12 +5,10 @@ import { AfterViewInit, Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './about.component.html',
-  styleUrl: './about.component.css'
+  styleUrl: './about.component.scss',
 })
-export class AboutComponent implements AfterViewInit{
-
+export class AboutComponent implements AfterViewInit {
   ngAfterViewInit(): void {
-   console.log("about");
+    console.log('about');
   }
-
 }

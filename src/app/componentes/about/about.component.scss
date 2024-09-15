@@ -59,26 +59,16 @@
   padding: 2rem;
 }
 
-.form-label{
-  font-size: 1rem;
-  font-family: "clacon",sans-serif;
-  color: #00d9ff;
- // font-weight: bold;
 
-}
-.btnInicioSesion{
-  font-family: "clacon",sans-serif;
-}
+
 // .btnRegistro{
 
 // }
 
-.letraLogin{
-  font-size: 1rem;
-}
 
 .card-body{
   background-color:#191e27de;
+  color: #00d9ff;
   display: flex;
   font-family: "clacon",sans-serif;
   flex-direction: column;
@@ -94,8 +84,16 @@
   font-family: "clacon",sans-serif;
   color: #00d9ff;
   font-weight: bold;
-
 }
 
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra el contenido horizontalmente */
+}
 
-
+.imagenMia {
+  max-width: 100%; /* Asegura que la imagen no se extienda más allá del contenedor */
+  height: 250px; /* Mantiene la relación de aspecto de la imagen */
+  border-radius: 10px; /* Opcional: Añade bordes redondeados a la imagen */
+}
