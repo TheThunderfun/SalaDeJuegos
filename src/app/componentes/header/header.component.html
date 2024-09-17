@@ -8,7 +8,10 @@
   </div>
   <nav class="nav-buttons">
     <button (click)="goToHome()" class="nav-btn">Home</button>
-    <button (click)="goToLogin()" class="nav-btn">Login</button>
+    <button *ngIf="isLoggedOut" (click)="goToLogin()" class="nav-btn">
+      Login
+    </button>
+    
     <button (click)="goToChat()" class="nav-btn">Chat</button>
     <button (click)="goToAbout()" class="nav-btn">Acerca de mi</button>
   </nav>

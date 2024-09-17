@@ -13,17 +13,23 @@ import { LoginComponent } from '../login/login.component';
 })
 export class HeaderComponent implements OnInit {
   profileMenu = false;
-  userEmail: string = '';
-  user: User | null = null;
+  userEmail: string = 'No disponible';
+  user: any = null;
+  isLoggedOut: boolean = true;
+
   constructor(private router: Router, public auth: Auth) {}
 
   ngOnInit() {
     this.auth.onAuthStateChanged((user) => {
       if (user) {
         this.user = user;
-        this.userEmail = user.email || 'No disponible';
+        this.userEmail = user.email || 'No disponible'; // Si el usuario no tiene email, muestra "No disponible"
+        this.isLoggedOut = false; // Si hay un usuario logueado, el estado de isLoggedOut es falso
+        console.log(this.isLoggedOut);
       } else {
-        this.userEmail = 'No disponible';
+        this.user = null;
+        this.userEmail = 'No disponible'; // Si no hay usuario logueado, muestra "No disponible"
+        this.isLoggedOut = true; // Si no hay usuario, el estado es true (no logueado)
       }
     });
   }

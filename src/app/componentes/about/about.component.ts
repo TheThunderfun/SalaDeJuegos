@@ -8,7 +8,5 @@ import { AfterViewInit, Component } from '@angular/core';
   styleUrl: './about.component.scss',
 })
 export class AboutComponent implements AfterViewInit {
-  ngAfterViewInit(): void {
-    console.log('about');
-  }
+  ngAfterViewInit(): void {}
 }
