@@ -1,0 +1,24 @@
+<div class="game-container">
+  <h1>Tiro al Blanco</h1>
+  <div
+    id="target-area"
+    class="target-area shadow-2-strong border border-info border-5 rounded custom-border-dotted"
+  >
+    <div
+      *ngFor="let target of targets"
+      class="target"
+      [ngStyle]="{ 'top.px': target.top, 'left.px': target.left }"
+      (click)="shootTarget(target)"
+    >
+      <img
+        src="../../../assets/images/diana.png"
+        alt="Target"
+        class="target-img"
+      />
+    </div>
+  </div>
+  <div class="scoreboard">
+    <h2>Puntaje: {{ score }}</h2>
+  </div>
+  <button (click)="startGame()">Iniciar Juego</button>
+</div>

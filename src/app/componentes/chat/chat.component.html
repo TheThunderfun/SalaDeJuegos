@@ -1,1 +1,24 @@
-<p>chat works!</p>
+<div class="d-flex justify-content-center align-items-center" style="height: 80vh;">
+  <div class="chat-container">
+    <div class="card" style="width: 100%; max-width: 600px;">
+      <div class="card-header">
+        Chat
+      </div>
+      <div class="card-body">
+        <div class="messages" style="height: 300px; overflow-y: auto; padding: 10px;">
+          <div *ngFor="let mensaje of mensajes$ | async">
+            <label class="mail">{{ mensaje.usuario }}:</label> {{ mensaje.contenido }}
+            <em>{{ mensaje.hora?.toDate() | date:'shortTime' }}</em>
+            <hr /> <!-- Línea divisoria entre mensajes -->
+          </div>
+        </div>
+        <div class="chat-input mt-3">
+          <div class="input-group">
+            <input type="text" [(ngModel)]="nuevoMensaje" class="form-control" placeholder="Escribe tu mensaje..." />
+            <button class="btn btn-primary" (click)="enviarMensaje()">Enviar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

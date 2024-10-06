@@ -1,25 +1,49 @@
-<header class="header-container">
-  <div class="logo">
+<header
+  class="header-container d-flex justify-content-between align-items-center p-3"
+>
+  <div class="logo d-flex justify-content-start">
     <img
       src="../../../assets/images/thunderLogo.png"
       class="logo"
       alt="logo-img"
     />
   </div>
-  <nav class="nav-buttons">
-    <button (click)="goToHome()" class="nav-btn">Home</button>
-    <button *ngIf="isLoggedOut" (click)="goToLogin()" class="nav-btn">
+  <nav class="nav-buttons d-flex justify-content-center flex-grow-1">
+    <button (click)="goToHome()" class="nav-btn btn btn-primary btn-sm mx-2">
+      Home
+    </button>
+    <button
+      *ngIf="isLoggedOut"
+      (click)="goToLogin()"
+      class="nav-btn btn btn-primary btn-sm mx-2"
+    >
       Login
     </button>
-    
-    <button (click)="goToChat()" class="nav-btn">Chat</button>
-    <button (click)="goToAbout()" class="nav-btn">Acerca de mi</button>
+
+    <button
+      (click)="goToChat()"
+      class="nav-btn btn btn-primary btn-sm mx-2"
+      *ngIf="!isLoggedOut"
+    >
+      Chat
+    </button>
+    <button (click)="goToAbout()" class="nav-btn btn btn-primary btn-sm mx-2">
+      Acerca de mi
+    </button>
+    <div class="profileComboBox justify-content-end" *ngIf="!isLoggedOut">
+      <select
+        (change)="mostrarPerfil($event)"
+        class="profileSelect"
+        style="
+          max-width: 150px;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        "
+      >
+        <option value="emailSelect">{{ userEmail }}</option>
+        <option value="logoutSelect">Cerrar sesión</option>
+      </select>
+    </div>
   </nav>
-  <div class="profileComboBox">
-    <select (change)="mostrarPerfil($event)" class="profileSelect">
-      <option value="perfilSelect">Perfil</option>
-      <option value="emailSelect">{{ userEmail }}</option>
-      <option value="logoutSelect">Cerrar sesión</option>
-    </select>
-  </div>
 </header>

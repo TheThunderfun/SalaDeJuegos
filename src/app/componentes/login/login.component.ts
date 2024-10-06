@@ -4,9 +4,9 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { key } from '../../../environmentConfig';
 import { addDoc, collection, Firestore } from '@angular/fire/firestore';
-import { Subscription } from 'rxjs';
 import Swal from 'sweetalert2';
 import { Auth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
+import { AuthService } from '../../Servicios/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -17,9 +17,6 @@ import { Auth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 })
 export class LoginComponent {
   public loginsCollection: any[] = [];
-  // public user: string = '';
-  public countLogins: number = 0;
-  private sub!: Subscription;
 
   email: string = '';
   password: string = '';
@@ -27,8 +24,19 @@ export class LoginComponent {
     private http: HttpClient,
     private router: Router,
     private firestore: Firestore,
-    public auth: Auth
+    public auth: Auth,
+    private authService: AuthService
   ) {}
+
+  usuario: string | null = null;
+
+  ngOnInit() {
+    if (this.authService.isLoggedIn()) {
+      this.router.navigate(['/home']);
+    } else {
+      this.usuario = this.authService.getCurrentUser()?.email;
+    }
+  }
 
   async onLogin() {
     try {
@@ -48,6 +56,12 @@ export class LoginComponent {
       this.router.navigate(['/home']);
     } catch (e) {
       console.log(e);
+      await this.showAlert(
+        'Error al ingresar datos',
+        'Aceptar',
+        `Mail o contraseña erroneos`,
+        'error'
+      );
     }
   }
   logOut() {

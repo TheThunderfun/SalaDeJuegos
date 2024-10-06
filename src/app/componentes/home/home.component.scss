@@ -1,22 +1,7 @@
 
-@font-face {
-  font-family: 'Crang';
-  src: url('../../../assets/fonts/Crang.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
 .body{
   overflow: visible;
 }
-
-@font-face {
-  font-family:'clacon' ;
-  src: url('../../../assets/fonts/clacon2.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
 .labelTitle{
 
   font-family: "Crang",sans-serif;
@@ -35,28 +20,14 @@
 
   margin-left: auto;
   margin-right: auto;
-  padding: 2rem;
+  padding: 0.5rem;
 }
-
-// .card-body{
-//   background-color: grey;
-//   font-size: 1rem;
-//   font-family: "clacon",sans-serif;
-//   color: #00d9ff;
-// }
-
-// .card-img-top {
-//   background:gray;
-//   width: 70%; /* O puedes usar un valor fijo como 150px */
-//   max-width: 100px; /* Establece un máximo ancho para la imagen */
-//   height: auto; /* Mantiene la proporción de la imagen */
-// }
 
 .card {
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: grey;
+  background-color: rgb(128, 128, 128);
 }
 
 .card-img-top {

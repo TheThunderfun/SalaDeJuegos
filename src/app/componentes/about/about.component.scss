@@ -42,9 +42,7 @@
 
   font-family: "Crang",sans-serif;
 
-  position: relative;
-
-  font-size: 3rem; /* Ajusta el tamaño del texto según tus necesidades */
+  font-size: 2.5rem; /* Ajusta el tamaño del texto según tus necesidades */
   font-weight: bold;
   color: transparent;
   text-shadow:
@@ -59,11 +57,14 @@
   padding: 2rem;
 }
 
+.custom-container {
+  width: 100%;          /* Que tome todo el ancho disponible */
+  max-width: 400px;      /* Máximo ancho en pantallas grandes */
+  margin: 0 auto;        /* Centrar el contenedor */
+  padding: 20px;         /* Espacio interno para que no quede tan comprimido */
+  box-sizing: border-box; /* Para que el padding no afecte el ancho total */
+}
 
-
-// .btnRegistro{
-
-// }
 
 
 .card-body{
@@ -75,7 +76,7 @@
   justify-content: flex-start;
   align-items: center;
   position: relative;
-  padding: 1rem;
+  padding: 2%;
 
 }
 .FormTitle{
@@ -86,11 +87,6 @@
   font-weight: bold;
 }
 
-.card-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centra el contenido horizontalmente */
-}
 
 .imagenMia {
   max-width: 100%; /* Asegura que la imagen no se extienda más allá del contenedor */

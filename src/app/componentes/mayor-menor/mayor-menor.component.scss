@@ -1,0 +1,29 @@
+.labelTitle{
+    font-family: "Crang",sans-serif;
+
+    font-size: 2rem; /* Ajusta el tamaño del texto según tus necesidades */
+    font-weight: bold;
+    color: transparent;
+    text-shadow:
+      1px 1px 0 #0947cea8, /* Borde derecho */
+      -1px -1px 0 #00f7ff, /* Borde izquierdo */
+      1px -1px 0 #0400ff, /* Borde inferior */
+      -1px 1px 0 #0026ff; /* Borde superior */
+}
+
+.FormTitle{
+    font-size: 3rem;
+    font-family: "clacon",sans-serif;
+    color: #00d9ff;
+}
+
+.card-body{
+    background-color: #191e27de;
+    font-size: 1rem;
+    font-family: "clacon",sans-serif;
+    color: #00d9ff;
+}
+.container {
+    max-height: 500px; 
+    overflow-y: auto; 
+}

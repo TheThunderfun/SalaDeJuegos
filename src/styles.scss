@@ -8,7 +8,39 @@ body {
   background-position: center; /* Centra la imagen */
   background-repeat: no-repeat; /* Evita que la imagen se repita */
   overflow: hidden;
+  overflow-x: hidden;
   min-height: 100vh;
+}
+
+@media (max-width: 576px) {
+  .nav-buttons {
+
+    display: flex;
+    white-space: nowrap; 
+  }
+
+  
+  .nav-btn {
+    font-size: 0.8rem; /* Botones más pequeños */
+    padding: 0.4rem 0.6rem;
+  }
+
+ 
+  .header-container {
+    width: 100%;
+  }
+
+  
+  .logo img {
+    max-width: 80px;
+  }
+  body{
+    background-size:cover;
+    overflow-x: hidden;
+    overflow-y:auto;
+    height: auto;
+    //width: 100vh;
+  }
 }
 
 @font-face {
@@ -36,8 +68,7 @@ body {
   font-size: 16px !important;            /* Cambia el tamaño de la fuente */
 }
 
-/* Efecto hover para el botón de confirmación */
-.swal2-confirm:hover {
-  background-color: #06aecc !important; /* Cambia el color cuando se pasa el mouse */
-}
 
+.swal2-confirm:hover {
+  background-color: #06aecc !important;
+}

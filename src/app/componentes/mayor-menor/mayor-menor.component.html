@@ -1,0 +1,70 @@
+<div class="container-sm my-2 mb-3">
+  <h1 class="text-center labelTitle">Mayor o Menor</h1>
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <div class="card shadow-2-strong border border-info border-5 rounded">
+        <div class="card-body text-center">
+          <h3 class="FormTitle">Carta Actual</h3>
+          <div class="carta-actual mb-3">
+            <img
+              [src]="obtenerImagenCarta()"
+              alt="Carta Actual"
+              class="img-fluid"
+              *ngIf="cartaActual"
+              style="max-width: 160px"
+            />
+          </div>
+
+          <div class="d-flex justify-content-center mb-4">
+            <button
+              data-mdb-button-init
+              data-mdb-ripple-init
+              class="btn btn-success mx-2"
+              (click)="elegirMayor()"
+              [disabled]="vidas <= 0"
+            >
+              Mayor
+            </button>
+
+            <button
+              data-mdb-button-init
+              data-mdb-ripple-init
+              class="btn btn-danger mx-2"
+              (click)="elegirMenor()"
+              [disabled]="vidas <= 0"
+            >
+              Menor
+            </button>
+          </div>
+
+          <hr class="my-4" />
+
+          <div *ngIf="mensaje" class="alert alert-info" role="alert">
+            {{ mensaje }}
+          </div>
+
+          <div class="d-flex justify-content-between mt-4">
+            <div>Puntaje: {{ puntaje }}</div>
+            <div>Vidas restantes: {{ vidas }}</div>
+            <div>Cartas restantes: {{ cartasRestantes }}</div>
+          </div>
+          <button
+            (click)="reiniciarJuego()"
+            class="btn btn-primary mt-3"
+            *ngIf="vidas <= 0"
+          >
+            Reiniciar Juego
+          </button>
+
+          <button
+            (click)="tomarCarta()"
+            class="btn btn-secondary mt-3"
+            [disabled]="vidas <= 0"
+          >
+            Siguiente Carta
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

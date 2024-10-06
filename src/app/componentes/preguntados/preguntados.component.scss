@@ -1,0 +1,28 @@
+.card {
+    padding: 1.5rem; /* Espaciado interno de la card */
+  }
+  .alert {
+    margin-bottom: 1rem; /* Espaciado inferior del alert */
+  }
+  .card{
+    font-family: 'clacon', sans-serif;
+    color: #18C2F9;
+    background-color: #191E27;
+  }
+
+
+  
+  .table td {
+    text-align: center; /* Centra el contenido de las celdas */
+    background-color: #191E27;
+     border: none;
+  }
+  
+  .btn-fixed-size {
+    width: 150px; /* Ancho fijo para los botones */
+    height: 50px; /* Altura fija para los botones */
+  }
+
+  .table-responsive{
+    background-color: #191E27;
+  }

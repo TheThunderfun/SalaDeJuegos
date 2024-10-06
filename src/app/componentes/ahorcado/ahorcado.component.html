@@ -1,0 +1,38 @@
+<div
+  class="container-fluid vh-100 d-flex justify-content-center align-items-center"
+>
+  <div class="ahorcado-container text-center">
+    <h1>Ahorcado</h1>
+
+    <div class="word-display my-3" style="font-size: 2rem; font-weight: bold">
+      {{ displayWord }}
+    </div>
+
+    <div *ngIf="mensaje" class="alert alert-warning">
+      {{ mensaje }}
+    </div>
+
+    <div class="buttons my-3">
+      <div class="d-flex flex-wrap justify-content-center">
+        <button
+          *ngFor="let letra of 'abcdefghijklmnopqrstuvwxyz'.split('')"
+          (click)="seleccionarLetra(letra)"
+          [disabled]="letraSeleccionada(letra) || juegoTerminado"
+          class="btn btn-outline-primary mx-1 my-1"
+        >
+          {{ letra }}
+        </button>
+      </div>
+    </div>
+
+    <button
+      (click)="reiniciarJuego()"
+      class="btn btn-secondary mb-3"
+      [disabled]="!juegoTerminado"
+    >
+      Reiniciar Juego
+    </button>
+
+    <div>Intentos restantes: {{ intentosRestantes }}</div>
+  </div>
+</div>

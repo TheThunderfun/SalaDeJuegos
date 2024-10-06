@@ -1,0 +1,29 @@
+.game-container {
+    text-align: center;
+    position: relative;
+  }
+  
+  .target-area {
+    width:800px;
+    
+    background-color: #191e27;
+    position: relative;
+    overflow: hidden;
+    height: 60vh;
+    margin: 0 auto;
+  }
+  
+  .target {
+    position: absolute;
+    cursor: pointer;
+  }
+  
+  .target-img {
+    width: 50px;  /* Ajustar tamaño de la imagen */
+    height: 50px; /* Ajustar tamaño de la imagen */
+    border-radius: 50%; /* Si quieres que las imágenes sigan siendo circulares */
+  }
+  
+  .scoreboard {
+    margin-top: 20px;
+  }

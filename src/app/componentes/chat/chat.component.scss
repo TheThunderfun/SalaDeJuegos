@@ -1,0 +1,36 @@
+.chat-container {
+  display: flex;
+  flex-direction: column;  
+}
+.card{
+  background-color: #363b42;
+}
+.card-header{
+  font-family: "Crang",sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: transparent;
+  text-shadow:
+    1px 1px 0 #0947cea8, /* Borde derecho */
+    -1px -1px 0 #00f7ff, /* Borde izquierdo */
+    1px -1px 0 #0400ff, /* Borde inferior */
+    -1px 1px 0 #0026ff; /* Borde superior */
+}
+
+.mail{
+  color: #FF6F61  ;
+}
+.messages {
+  font-family:'clacon','sans-serif' ;
+  border-radius: 5px; 
+  color: #18c2f9;
+}
+
+.chat-input {
+  display: flex; 
+  margin-top: 10px; 
+
+}
+.input-group{
+  font-family:'clacon','sans-serif' ;
+}

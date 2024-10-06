@@ -1,29 +1,10 @@
 
-@font-face {
-  font-family: 'Crang';
-  src: url('../../../assets/fonts/Crang.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family:'clacon' ;
-  src: url('../../../assets/fonts/clacon2.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
 
 
 .login-container {
   display: flex;
-  height: 100vh;
+  //height: vh;
   font-family: "Crang",sans-serif;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  position: relative;
-
-
 
   font-size: 2rem; /* Ajusta el tamaño del texto según tus necesidades */
   font-weight: bold;
@@ -42,7 +23,7 @@
 
   font-family: "Crang",sans-serif;
 
-  position: relative;
+
 
   font-size: 3rem; /* Ajusta el tamaño del texto según tus necesidades */
   font-weight: bold;
@@ -53,10 +34,7 @@
     1px -1px 0 #0400ff, /* Borde inferior */
     -1px 1px 0 #0026ff; /* Borde superior */
   top: 1%;
-
-  margin-left: auto;
-  margin-right: auto;
-  padding: 2rem;
+  padding: 0.5rem;
 }
 
 .form-label{
