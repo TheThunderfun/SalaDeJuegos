@@ -25,7 +25,7 @@
 
 
 
-  font-size: 3rem; /* Ajusta el tamaño del texto según tus necesidades */
+  font-size: 2.5rem; /* Ajusta el tamaño del texto según tus necesidades */
   font-weight: bold;
   color: transparent;
   text-shadow:
@@ -33,23 +33,19 @@
     -1px -1px 0 #00f7ff, /* Borde izquierdo */
     1px -1px 0 #0400ff, /* Borde inferior */
     -1px 1px 0 #0026ff; /* Borde superior */
-  top: 1%;
-  padding: 0.5rem;
+  padding: 0rem;
 }
 
 .form-label{
   font-size: 1rem;
   font-family: "clacon",sans-serif;
   color: #00d9ff;
- // font-weight: bold;
+ 
 
 }
 .btnInicioSesion{
   font-family: "clacon",sans-serif;
 }
-// .btnRegistro{
-
-// }
 
 .letraLogin{
   font-size: 1rem;

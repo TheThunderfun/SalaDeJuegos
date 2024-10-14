@@ -28,7 +28,6 @@ export class HeaderComponent implements OnInit {
         this.user = user;
         this.userEmail = user.email || 'Perfil'; // Si el usuario no tiene email, muestra "No disponible"
         this.isLoggedOut = false; // Si hay un usuario logueado, el estado de isLoggedOut es falso
-        console.log(this.isLoggedOut);
       } else {
         this.user = null;
         this.userEmail = 'Perfil'; // Si no hay usuario logueado, muestra "No disponible"

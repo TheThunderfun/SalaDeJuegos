@@ -5,6 +5,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { key } from '../../../environmentConfig';
 import { addDoc, collection, Firestore } from '@angular/fire/firestore';
 import { Subscription } from 'rxjs';
+import { LoginService } from '../../Servicios/login.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro',
@@ -14,62 +16,48 @@ import { Subscription } from 'rxjs';
   styleUrl: './registro.component.scss',
 })
 export class RegistroComponent {
-  public nombre: string = '';
-  public apellido: string = '';
   public email: string = '';
   public password: string = '';
-  private fireBaseUrl = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${key}`;
 
   constructor(
-    private http: HttpClient,
     private router: Router,
-    private firestore: Firestore
+    private loginService: LoginService,
   ) {}
 
-  onRegister() {
-    if (this.email && this.password) {
-      const body = {
-        email: this.email,
-        password: this.password,
-        returnSecureToken: true,
-      };
-
-      this.http.post(this.fireBaseUrl, body).subscribe(
-        (response) => {
-          console.log('Registro exitoso', response);
-          alert(`Registro exitoso con el email: ${this.email}`);
-          this.guardarUsuario();
-          this.router.navigate(['/home']);
-        },
-        (error) => {
-          console.error('Error en el registro', error);
-          alert('Hubo un error en el registro. Intenta nuevamente.');
-        }
+  async onRegister() {
+    try {
+      const response = await this.loginService.signUp(
+        this.email,
+        this.password,
       );
-    } else {
-      alert('Por favor, ingrese un email y una contraseña válidos.');
+
+      await this.showAlert(
+        'Inicio de sesión exitoso',
+        'Aceptar',
+        `Se inició sesión correctamente con el email: ${this.email}`,
+        'success',
+      );
+      this.loginService.signIn(this.email, this.password);
+      this.router.navigate(['/home']);
+    } catch (e) {
+      console.log(e);
+      await this.showAlert('Error al ingresar datos', 'Aceptar', e, 'error');
     }
   }
 
-  guardarUsuario() {
-    const userRef = collection(this.firestore, 'usuarios');
-
-    // Datos a guardar
-    const userData = {
-      nombre: this.nombre,
-      apellido: this.apellido,
-      email: this.email,
-    };
-
-    addDoc(userRef, userData)
-      .then(() => {
-        console.log('Datos guardados correctamente en Firestore');
-      })
-      .catch((error) => {
-        console.error('Error al guardar en Firestore', error);
-      });
+  async showAlert(
+    strTitle: string,
+    strButton: string,
+    strtext: any,
+    strIcon: string,
+  ) {
+    await Swal.fire({
+      title: strTitle,
+      text: strtext,
+      icon: strIcon as any,
+      confirmButtonText: strButton,
+    });
   }
-
   goToLogin() {
     this.router.navigate(['/login']);
   }

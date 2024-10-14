@@ -11,15 +11,20 @@ export class AuthService {
 
   constructor(private auth: Auth) {
     onAuthStateChanged(this.auth, (user) => {
-      this.userSubject.next(user); // Actualiza el estado del usuario
+      this.userSubject.next(user);
     });
   }
 
-  isLoggedIn(): boolean {
-    return !!this.userSubject.value; // Retorna true si hay un usuario autenticado
+  getCurrentUser() {
+    return this.auth.currentUser;
   }
 
-  getCurrentUser() {
-    return this.userSubject.value; // Devuelve el usuario actual
+  isLoggedIn(): boolean {
+    const user = this.auth.currentUser;
+    if (user) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

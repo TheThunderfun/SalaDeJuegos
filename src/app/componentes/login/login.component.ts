@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { key } from '../../../environmentConfig';
 import { addDoc, collection, Firestore } from '@angular/fire/firestore';
 import Swal from 'sweetalert2';
 import { Auth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 import { AuthService } from '../../Servicios/auth.service';
+import { LoginService } from '../../Servicios/login.service';
 
 @Component({
   selector: 'app-login',
@@ -21,58 +21,31 @@ export class LoginComponent {
   email: string = '';
   password: string = '';
   constructor(
-    private http: HttpClient,
+    private loginService: LoginService,
     private router: Router,
-    private firestore: Firestore,
-    public auth: Auth,
-    private authService: AuthService
   ) {}
 
   usuario: string | null = null;
 
-  ngOnInit() {
-    if (this.authService.isLoggedIn()) {
-      this.router.navigate(['/home']);
-    } else {
-      this.usuario = this.authService.getCurrentUser()?.email;
-    }
-  }
-
   async onLogin() {
     try {
-      const res = await signInWithEmailAndPassword(
-        this.auth,
+      const response = await this.loginService.signIn(
         this.email,
-        this.password
+        this.password,
       );
 
       await this.showAlert(
         'Inicio de sesión exitoso',
         'Aceptar',
         `Se inició sesión correctamente con el email: ${this.email}`,
-        'success'
+        'success',
       );
 
       this.router.navigate(['/home']);
     } catch (e) {
       console.log(e);
-      await this.showAlert(
-        'Error al ingresar datos',
-        'Aceptar',
-        `Mail o contraseña erroneos`,
-        'error'
-      );
+      await this.showAlert('Error al ingresar datos', 'Aceptar', e, 'error');
     }
-  }
-  logOut() {
-    signOut(this.auth).then(() => {
-      console.log(this.auth.currentUser?.email);
-    });
-  }
-
-  Login() {
-    let col = collection(this.firestore, 'logins');
-    addDoc(col, { fecha: new Date(), user: this.email });
   }
 
   goToRegistro() {
@@ -92,8 +65,8 @@ export class LoginComponent {
   async showAlert(
     strTitle: string,
     strButton: string,
-    strtext: string,
-    strIcon: string
+    strtext: any,
+    strIcon: string,
   ) {
     await Swal.fire({
       title: strTitle,

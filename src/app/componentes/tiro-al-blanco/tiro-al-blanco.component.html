@@ -1,9 +1,34 @@
 <div class="game-container">
-  <h1>Tiro al Blanco</h1>
+  <h1 class="title">Tiro al Blanco</h1>
+  <h2 class="timer">Tiempo Restante {{ tiempoRestante }} Segundos</h2>
   <div
     id="target-area"
     class="target-area shadow-2-strong border border-info border-5 rounded custom-border-dotted"
   >
+    <div
+      class="card d-flex align-items-center justify-content-center"
+      *ngIf="!empezo"
+    >
+      <h1 class="dificultad">Dificultad</h1>
+      <button
+        class="btn btn-success mx-2"
+        (click)="setDificultad('facil'); startGame()"
+      >
+        Fácil
+      </button>
+      <button
+        class="btn btn-success mx-2"
+        (click)="setDificultad('normal'); startGame()"
+      >
+        Normal
+      </button>
+      <button
+        class="btn btn-success mx-2"
+        (click)="setDificultad('dificil'); startGame()"
+      >
+        Difícil
+      </button>
+    </div>
     <div
       *ngFor="let target of targets"
       class="target"
@@ -20,5 +45,6 @@
   <div class="scoreboard">
     <h2>Puntaje: {{ score }}</h2>
   </div>
-  <button (click)="startGame()">Iniciar Juego</button>
+
+  <button class="btn btn-dark mx-2" (click)="endGame()">Terminar</button>
 </div>

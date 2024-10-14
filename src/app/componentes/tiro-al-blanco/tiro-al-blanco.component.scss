@@ -1,6 +1,46 @@
 .game-container {
     text-align: center;
     position: relative;
+    font-family:"clacon";
+    
+  }
+  .scoreboard{
+    font-family: "Crang",sans-serif;
+    font-size: 1rem; /* Ajusta el tamaño del texto según tus necesidades */
+    font-weight: bold;
+    color: #ff007f; /* Cambia a tu color elegido */
+      top: 1%;
+     padding: 0.5rem;
+  }
+.card{
+  background-color: transparent;
+  position: absolute; // Posiciona la tarjeta de forma absoluta
+  top: 50%; // Centrala verticalmente
+  left: 50%; // Centrala horizontalmente
+  transform: translate(-50%, -50%); // Ajusta para centrar completamente
+  z-index: 10; // Asegúrate de que esté encima de otros elementos
+  border:none;
+}
+.dificultad{
+  color: #FF6F61;
+}
+
+  .timer{
+    color: #FF6F61;
+  }
+
+  .title{
+    font-family: "Crang",sans-serif;
+    font-size: 3rem; /* Ajusta el tamaño del texto según tus necesidades */
+    font-weight: bold;
+    color: transparent;
+    text-shadow:
+      1px 1px 0 #0947cea8, /* Borde derecho */
+      -1px -1px 0 #00f7ff, /* Borde izquierdo */
+      1px -1px 0 #0400ff, /* Borde inferior */
+      -1px 1px 0 #0026ff; /* Borde superior */
+    top: 1%;
+    padding: 0.5rem;
   }
   
   .target-area {

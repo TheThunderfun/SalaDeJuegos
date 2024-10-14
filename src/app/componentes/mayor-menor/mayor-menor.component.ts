@@ -29,19 +29,30 @@ export class MayorMenorComponent {
     this.puntaje = 0;
     this.vidas = 3;
     this.mensaje = '';
+    this.cartaActual = null;
+    this.cartaSiguiente = null;
 
-    this.tomarCarta();
+    this.tomarCartaInicial();
+    console.log(this.cartaActual);
+    console.log(this.cartaSiguiente);
   }
 
+  tomarCartaInicial() {
+    this.servMayorMenor.obtenerCarta(this.mazoId).subscribe((data) => {
+      this.cartaActual = data.cards[0]; // Establece la carta actual
+
+      // Ahora toma la segunda carta
+      this.servMayorMenor.obtenerCarta(this.mazoId).subscribe((data) => {
+        this.cartaSiguiente = data.cards[0]; // Establece la carta siguiente
+        this.cartasRestantes = data.remaining; // Actualiza las cartas restantes
+      });
+    });
+  }
   tomarCarta() {
     this.servMayorMenor.obtenerCarta(this.mazoId).subscribe((data) => {
-      this.cartaSiguiente = data.cards[0]; // Asigna la nueva carta como carta siguiente
-      this.cartasRestantes = data.remaining + 1; // Actualiza las cartas restantes
-
-      if (!this.cartaActual) {
-        this.cartaActual = this.cartaSiguiente; // Si es la primera carta, inicializa carta actual
-        this.tomarCarta(); // Llama a tomarCarta nuevamente para obtener la siguiente carta
-      }
+      this.cartaSiguiente = data.cards[0]; // Agarro la nueva carta como carta siguiente
+      this.cartasRestantes = data.remaining; // Actualiza las cartas restantes
+      console.log(data.cards[0]);
     });
   }
 
@@ -71,7 +82,7 @@ export class MayorMenorComponent {
     }
 
     this.cartaActual = this.cartaSiguiente; // Mueve la carta siguiente a la carta actual
-    this.tomarCarta(); // Obtén la siguiente carta para la próxima ronda
+    this.tomarCarta(); // Agarro la siguiente carta para la próxima
 
     if (this.vidas <= 0) {
       this.mensaje = 'Te quedaste sin vidas. Fin del juego.';
@@ -80,8 +91,8 @@ export class MayorMenorComponent {
 
   obtenerValorCarta(carta: any): number {
     switch (carta.value) {
-      case 'AS':
-        return 14; // Asigna 14 al As
+      case 'ACE':
+        return 14; // As
       case 'KING':
         return 13; // Rey
       case 'QUEEN':
@@ -96,6 +107,7 @@ export class MayorMenorComponent {
   reiniciarJuego() {
     this.servMayorMenor.obtenerMazo().subscribe((data) => {
       this.mazoId = data.deck_id;
+      this.cartasRestantes = data.remaining;
     });
     this.iniciarJuego();
   }

@@ -31,11 +31,6 @@ export class ChatComponent implements OnInit {
       console.log('Mensajes recibidos:', mensajes); // Verifica si los mensajes están llegando
     });
   }
-  //   if (this.authService.isLoggedIn()) {
-  //     this.usuario = this.authService.getCurrentUser()?.email;
-  //   } else {
-  //     this.router.navigate(['/login']);
-  //   }
 
   enviarMensaje() {
     const currentUser = this.authService.getCurrentUser();
