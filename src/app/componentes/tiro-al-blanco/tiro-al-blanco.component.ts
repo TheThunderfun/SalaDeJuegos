@@ -42,7 +42,7 @@ export class TiroAlBlancoComponent {
     clearInterval(this.gameInterval); // Detener el intervalo de generación de objetivos
     clearInterval(this.timerInterval); // Detener el temporizador
     this.empezo = false; // Reiniciar el estado del juego
-    // Aquí puedes mostrar un mensaje con el puntaje final o realizar otra acción
+  
     console.log(`Juego terminado. Puntaje final: ${this.score}`);
     this.showAlert(
       'Puntaje',
