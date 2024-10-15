@@ -1,3 +1,15 @@
+.titulo{
+  font-family: "Crang",sans-serif;
+  font-size: 2.5rem; /* Ajusta el tamaño del texto según tus necesidades */
+  font-weight: bold;
+  color: transparent;
+  text-shadow:
+    1px 1px 0 #0947cea8, /* Borde derecho */
+    -1px -1px 0 #00f7ff, /* Borde izquierdo */
+    1px -1px 0 #0400ff, /* Borde inferior */
+    -1px 1px 0 #0026ff; /* Borde superior */
+  padding: 0rem;
+}
 .ahorcado-container {
   background-color: #191E27; 
   border: 2px solid #4682b4;
@@ -49,5 +61,6 @@
       }
     }
   }
+
 
 }

@@ -26,3 +26,21 @@
   .table-responsive{
     background-color: #191E27;
   }
+
+  .title{
+    font-family: "Crang",sans-serif;
+    font-size: 3rem; /* Ajusta el tamaño del texto según tus necesidades */
+    font-weight: bold;
+    color: transparent;
+    text-shadow:
+      1px 1px 0 #0947cea8, /* Borde derecho */
+      -1px -1px 0 #00f7ff, /* Borde izquierdo */
+      1px -1px 0 #0400ff, /* Borde inferior */
+      -1px 1px 0 #0026ff; /* Borde superior */
+    top: 1%;
+    padding: 0.5rem;
+  }
+  .msj{
+    font-size: 1rem;
+    color: #FF6F61;;
+  }

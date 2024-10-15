@@ -1,11 +1,10 @@
-<div class="container">
+<div class="container-sm" style="max-width: 150vh">
+  <h1 class="title text text-center">Preguntados de One Piece</h1>
   <div class="card shadow border-info border-5 rounded">
     <div class="card-body">
-      <h1 class="text-center">Preguntados de One Piece</h1>
-
-      <div *ngIf="mensaje" class="alert alert-info mb-1">
+      <h3 *ngIf="mensaje" class="msj text-center">
         {{ mensaje }}
-      </div>
+      </h3>
 
       <div class="text-center">
         <h3>¿Quién es este personaje?</h3>
@@ -14,7 +13,7 @@
           [src]="personaje.character.images.jpg.image_url"
           alt="{{ personaje.character.name }}"
           class="img-fluid"
-          style="max-width: 120px"
+          style="max-width: auto; max-height: 30vh; overflow: auto"
         />
       </div>
 
@@ -23,24 +22,28 @@
           <h4 class="me-3">Opciones:</h4>
           <div class="d-flex flex-wrap justify-content-center">
             <button
+              [disabled]="vidas === 0"
               (click)="seleccionarOpcion(opciones[0])"
               class="btn btn-danger btn-fixed-size me-2"
             >
               {{ opciones[0]?.character.name }}
             </button>
             <button
+              [disabled]="vidas === 0"
               (click)="seleccionarOpcion(opciones[1])"
               class="btn btn-danger btn-fixed-size me-2"
             >
               {{ opciones[1]?.character.name }}
             </button>
             <button
+              [disabled]="vidas === 0"
               (click)="seleccionarOpcion(opciones[2])"
               class="btn btn-danger btn-fixed-size me-2"
             >
               {{ opciones[2]?.character.name }}
             </button>
             <button
+              [disabled]="vidas === 0"
               (click)="seleccionarOpcion(opciones[3])"
               class="btn btn-danger btn-fixed-size"
             >
@@ -50,8 +53,16 @@
         </div>
       </div>
 
-      <div class="mt-3">
+      <div class="mt-3 d-flex align-items-center justify-content-between">
         <h4>Puntaje: {{ puntaje }}</h4>
+        <h4>Vidas: {{ vidas }}</h4>
+        <button
+          class="btn btn-primary btn-fixed-sm"
+          *ngIf="vidas === 0"
+          (click)="reiniciarJuego()"
+        >
+          Reiniciar Juego
+        </button>
       </div>
     </div>
   </div>

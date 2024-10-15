@@ -11,6 +11,7 @@ export class PreguntadosComponent {
   opciones: any[] = []; // Para almacenar las opciones de respuesta
   puntaje: number = 0;
   mensaje: string = '';
+  vidas: number = 3;
 
   constructor(private preguntadosService: PreguntadosService) {}
 
@@ -60,9 +61,14 @@ export class PreguntadosComponent {
       this.mensaje = '¡Correcto!';
     } else {
       this.mensaje = 'Incorrecto. Intenta de nuevo.';
+      this.vidas--;
     }
-
     // Reiniciar el juego para la próxima pregunta
     this.obtenerPersonaje(); // Vuelve a cargar un nuevo personaje
+  }
+
+  reiniciarJuego() {
+    this.puntaje = 0;
+    this.vidas = 3;
   }
 }

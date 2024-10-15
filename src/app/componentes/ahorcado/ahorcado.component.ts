@@ -22,6 +22,7 @@ export class AhorcadoComponent {
   maxIntentos: number = 5;
   mensaje: string = '';
   juegoTerminado: boolean = false;
+  puntos: number = 0;
 
   constructor() {
     this.iniciarJuego();
@@ -69,10 +70,12 @@ export class AhorcadoComponent {
   comprobarEstadoJuego() {
     if (this.letrasIncorrectas.length >= this.maxIntentos) {
       this.mensaje = '¡Perdiste! La palabra era: ' + this.palabraAdivinar;
+      this.puntos = 0;
       this.juegoTerminado = true;
     } else if (this.displayWord.replace(/ /g, '') === this.palabraAdivinar) {
       this.mensaje = '¡Felicidades, adivinaste la palabra!';
-      this.juegoTerminado = true;
+      this.puntos++;
+      this.reiniciarJuego();
     }
   }
 
