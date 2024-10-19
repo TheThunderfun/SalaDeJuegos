@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { MayorMenorService } from '../../Servicios/mayor-menor.service';
+import { ScoreboardsService } from '../../Servicios/scoreboards.service';
+import { AuthService } from '../../Servicios/auth.service';
 
 @Component({
   selector: 'app-mayor-menor',
@@ -16,7 +18,11 @@ export class MayorMenorComponent {
   cartasRestantes: number = 0;
   vidas: number = 3;
 
-  constructor(private servMayorMenor: MayorMenorService) {}
+  constructor(
+    private servMayorMenor: MayorMenorService,
+    private svPuntaje: ScoreboardsService,
+    private svAuth: AuthService,
+  ) {}
 
   ngOnInit() {
     this.servMayorMenor.obtenerMazo().subscribe((data) => {
@@ -105,6 +111,11 @@ export class MayorMenorComponent {
   }
 
   reiniciarJuego() {
+    this.svPuntaje.GuardarPuntaje(
+      this.svAuth.getCurrentUser() ?? 'Usuario anonimo',
+      'Mayor-menor',
+      this.puntaje,
+    );
     this.servMayorMenor.obtenerMazo().subscribe((data) => {
       this.mazoId = data.deck_id;
       this.cartasRestantes = data.remaining;

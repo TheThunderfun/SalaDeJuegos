@@ -1,0 +1,118 @@
+<h1 class="title text-center">Encuesta</h1>
+<div
+  class="container border border-info border-5 rounded custom-border-dotted mt-1"
+>
+  <form [formGroup]="encuestaForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre y Apellido</label>
+      <input
+        type="text"
+        id="nombre"
+        class="form-control"
+        formControlName="nombre"
+        [ngClass]="{ 'is-invalid': nombre?.invalid && nombre?.touched }"
+      />
+      <div *ngIf="nombre?.invalid && nombre?.touched" class="invalid-feedback">
+        Nombre y apellido es requerido (mínimo 3 caracteres).
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="edad" class="form-label">Edad</label>
+      <input
+        type="number"
+        id="edad"
+        class="form-control"
+        formControlName="edad"
+        [ngClass]="{ 'is-invalid': edad?.invalid && edad?.touched }"
+      />
+      <div *ngIf="edad?.invalid && edad?.touched" class="invalid-feedback">
+        Edad válida es requerida (18 a 99 años).
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="telefono" class="form-label">Número de Teléfono</label>
+      <input
+        type="text"
+        id="telefono"
+        class="form-control"
+        formControlName="telefono"
+        [ngClass]="{ 'is-invalid': telefono?.invalid && telefono?.touched }"
+      />
+      <div
+        *ngIf="telefono?.invalid && telefono?.touched"
+        class="invalid-feedback"
+      >
+        Teléfono debe contener 10 dígitos numéricos.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">¿Te gusta jugar videojuegos?</label>
+      <div>
+        <input
+          type="radio"
+          id="radio1"
+          value="Si"
+          formControlName="pregunta1"
+        />
+        <label for="radio1">Sí</label>
+      </div>
+      <div>
+        <input
+          type="radio"
+          id="radio2"
+          value="No"
+          formControlName="pregunta1"
+        />
+        <label for="radio2">No</label>
+      </div>
+      <div *ngIf="pregunta1?.invalid && pregunta1?.touched" class="text-danger">
+        Selecciona una opción.
+      </div>
+    </div>
+
+    <div class="mb-3" formGroupName="pregunta2">
+      <label class="form-label">¿Qué dispositivos usas para jugar?</label>
+      <div>
+        <input type="checkbox" id="opcionA" formControlName="opcionA" />
+        <label for="opcionA">PC</label>
+      </div>
+      <div>
+        <input type="checkbox" id="opcionB" formControlName="opcionB" />
+        <label for="opcionB">Consola</label>
+      </div>
+      <div *ngIf="pregunta2?.invalid && pregunta2?.touched" class="text-danger">
+        Selecciona al menos una opción.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="pregunta3" class="form-label"
+        >¿Cuál es tu videojuego favorito?</label
+      >
+      <input
+        type="text"
+        id="pregunta3"
+        class="form-control"
+        formControlName="pregunta3"
+        [ngClass]="{ 'is-invalid': pregunta3?.invalid && pregunta3?.touched }"
+      />
+      <div
+        *ngIf="pregunta3?.invalid && pregunta3?.touched"
+        class="invalid-feedback"
+      >
+        Responde la pregunta.
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="encuestaForm.invalid"
+    >
+      Enviar Encuesta
+    </button>
+  </form>
+</div>

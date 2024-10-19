@@ -1,0 +1,45 @@
+.container {
+    max-width: 75vh;
+    margin: 0 auto;
+    max-height: 80vh;
+    background-color: #191e27;
+    color: #00f7ff;
+    font-family: "clacon";
+    overflow-y: scroll;
+  }
+  
+  .invalid-feedback {
+    color: red;
+    font-size: 0.9rem;
+  }
+
+  ::-webkit-scrollbar {
+    width: 12px; /* Ancho de la barra de desplazamiento */
+  }
+  
+  /* Personalizar la pista de la scrollbar */
+  ::-webkit-scrollbar-track {
+    background: #191e27; /* Color de la pista */
+    border-radius: 10px; /* Bordes redondeados */
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: grey; /* Color del pulgar */
+    border-radius: 10px; /* Bordes redondeados */
+    border: 3px solid grey;
+
+  }
+  .title{
+    font-family: "Crang",sans-serif;
+
+    position: relative;
+  
+    font-size: 2rem; /* Ajusta el tamaño del texto según tus necesidades */
+    font-weight: bold;
+    color: transparent;
+    text-shadow:
+      1px 1px 0 #0947cea8, /* Borde derecho */
+      -1px -1px 0 #00f7ff, /* Borde izquierdo */
+      1px -1px 0 #0400ff, /* Borde inferior */
+      -1px 1px 0 #0026ff; /* Borde superior */
+    top: 1%;
+  }

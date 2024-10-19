@@ -1,0 +1,19 @@
+.labelTitle{
+    font-family: "Crang",sans-serif;
+
+    position: relative;
+  
+    font-size: 3rem; /* Ajusta el tamaño del texto según tus necesidades */
+    font-weight: bold;
+    color: transparent;
+    text-shadow:
+      1px 1px 0 #0947cea8, /* Borde derecho */
+      -1px -1px 0 #00f7ff, /* Borde izquierdo */
+      1px -1px 0 #0400ff, /* Borde inferior */
+      -1px 1px 0 #0026ff; /* Borde superior */
+    top: 1%;
+  
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.5rem;
+}

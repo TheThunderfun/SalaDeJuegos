@@ -1,0 +1,47 @@
+.table-container {
+    max-width: 800px; /* Ajusta el ancho máximo según tus necesidades */
+    margin: 0 auto; /* Centra la tabla en la pantalla */
+    padding: 20px; /* Espaciado alrededor de la tabla */
+  }
+  
+  .table {
+    width: 100%; 
+    font-family: "clacon";
+
+  }
+  
+  .table th,
+  .table td {
+    text-align: center; /* Centra el texto en las celdas */
+    padding: 10px; /* Espaciado en las celdas */
+    background-color: #191e27e0;
+    color: #00f7ff;
+}
+  
+  .table th {
+    background-color: #191e27e0; /* Color de fondo para los encabezados */
+    color: #FF6F61;
+  }
+  
+  .table td {
+    border: 1px solid #191e27; /* Bordes para las celdas */
+  }
+
+  .titulo{
+    font-family: "Crang",sans-serif;
+    font-size: 3rem; /* Ajusta el tamaño del texto según tus necesidades */
+    font-weight: bold;
+    color: transparent;
+    text-shadow:
+      1px 1px 0 #0947cea8, /* Borde derecho */
+      -1px -1px 0 #00f7ff, /* Borde izquierdo */
+      1px -1px 0 #0400ff, /* Borde inferior */
+      -1px 1px 0 #0026ff; /* Borde superior */
+    top: 1%;
+    padding: 0.5rem;
+  }
+
+  .scrollable-table {
+    max-height: 400px;  /* Puedes ajustar el valor */
+    overflow-y: auto;   /* Agrega scroll vertical */
+  }

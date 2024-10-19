@@ -16,7 +16,7 @@ export class AuthService {
   }
 
   getCurrentUser() {
-    return this.auth.currentUser;
+    return this.auth.currentUser?.email;
   }
 
   isLoggedIn(): boolean {

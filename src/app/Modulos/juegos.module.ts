@@ -8,6 +8,7 @@ import { MayorMenorService } from '../Servicios/mayor-menor.service';
 import { PreguntadosComponent } from '../componentes/preguntados/preguntados.component';
 import { PreguntadosService } from '../Servicios/preguntados.service';
 import { TiroAlBlancoComponent } from '../componentes/tiro-al-blanco/tiro-al-blanco.component';
+import { ScoreboardsService } from '../Servicios/scoreboards.service';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,6 @@ import { TiroAlBlancoComponent } from '../componentes/tiro-al-blanco/tiro-al-bla
       },
     ]),
   ],
-  providers: [MayorMenorService, PreguntadosService],
+  providers: [MayorMenorService, PreguntadosService, ScoreboardsService],
 })
 export class JuegosModule {}

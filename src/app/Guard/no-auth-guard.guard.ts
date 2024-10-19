@@ -6,7 +6,9 @@ export const noAuthGuard: CanActivateFn = (route, state) => {
   const auth = inject(AuthService);
   const router = inject(Router);
 
-  if (auth.getCurrentUser() != null) {
+  const user = auth.getCurrentUser() || 'No disponible';
+
+  if (auth.getCurrentUser() != 'No disponible') {
     console.log(auth.getCurrentUser());
     router.navigate(['/home']);
     return false;

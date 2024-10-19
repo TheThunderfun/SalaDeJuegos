@@ -1,40 +1,4 @@
 
-@font-face {
-  font-family: 'Crang';
-  src: url('../../../assets/fonts/Crang.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family:'clacon' ;
-  src: url('../../../assets/fonts/clacon2.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-
-.login-container {
-  display: flex;
-  height: 100vh;
-  font-family: "Crang",sans-serif;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  position: relative;
-
-
-
-  font-size: 2rem; /* Ajusta el tamaño del texto según tus necesidades */
-  font-weight: bold;
-  color: transparent;
-  text-shadow:
-    1px 1px 0 #0947cea8, /* Borde derecho */
-    -1px -1px 0 #00f7ff, /* Borde izquierdo */
-    1px -1px 0 #0400ff, /* Borde inferior */
-    -1px 1px 0 #0026ff; /* Borde superior */
-}
-
 .labelLogin{
   display: block;
 }
@@ -59,16 +23,17 @@
 
 .custom-container {
   width: 100%;          /* Que tome todo el ancho disponible */
-  max-width: 400px;      /* Máximo ancho en pantallas grandes */
-  margin: 0 auto;        /* Centrar el contenedor */
-  padding: 20px;         /* Espacio interno para que no quede tan comprimido */
+  max-width: 600px;    /* Aumentar el máximo ancho en pantallas grandes */
+  margin: 20px auto;   /* Añadir margen vertical y centrar el contenedor */
+  padding: 30px;       /* Espacio interno para que no quede tan comprimido */
   box-sizing: border-box; /* Para que el padding no afecte el ancho total */
+  background-color: rgba(25, 30, 39, 0.8); /* Fondo semi-transparente (opcional) */
+  border-radius: 10px; /* Esquinas redondeadas para el contenedor */
+  border: 1px solid #007bff; /* Para que el padding no afecte el ancho total */
 }
 
-
-
 .card-body{
-  background-color:#191e27de;
+  background-color:#191e27;
   color: #00d9ff;
   display: flex;
   font-family: "clacon",sans-serif;
@@ -89,7 +54,49 @@
 
 
 .imagenMia {
-  max-width: 100%; /* Asegura que la imagen no se extienda más allá del contenedor */
-  height: 250px; /* Mantiene la relación de aspecto de la imagen */
+  max-width: 50vh; /* Asegura que la imagen no se extienda más allá del contenedor */
+  height: 50vh; /* Mantiene la relación de aspecto de la imagen */
   border-radius: 10px; /* Opcional: Añade bordes redondeados a la imagen */
+}
+
+.image-container {
+  position: relative; /* Para posicionar las tarjetas relativas a la imagen */
+  display: flex; /* Para usar flexbox */
+  justify-content: center; /* Centrar el contenido */
+
+}
+
+
+
+.left-card, .right-card {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0; /* Oculto por defecto */
+  transition: opacity 0.3s, transform 0.3s; /* Transición suave */
+  width: 150px; /* Ajusta según necesites */
+}
+
+.left-card {
+  left: -500px; /* Ajusta según necesites */
+}
+
+.right-card {
+  right: -500px; /* Ajusta según necesites */
+}
+
+.image-container:hover .left-card,
+.image-container:hover .right-card {
+  opacity: 1; /* Muestra las tarjetas al pasar el mouse */
+  transform: translateY(-50%) translateX(0); /* Asegura que se mantengan centradas */
+}
+
+/* Estilo de las tarjetas */
+.card {
+  width: 500px; /* Ancho de las tarjetas */
+  height: auto;
+  border: 1px solid #007bff; /* Borde de la tarjeta */
+  border-radius: 8px; /* Esquinas redondeadas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+  background-color: #fff; /* Fondo blanco */
 }

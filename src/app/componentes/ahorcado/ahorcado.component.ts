@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ScoreboardsService } from '../../Servicios/scoreboards.service';
+import { AuthService } from '../../Servicios/auth.service';
 
 @Component({
   selector: 'app-ahorcado',
@@ -24,7 +26,10 @@ export class AhorcadoComponent {
   juegoTerminado: boolean = false;
   puntos: number = 0;
 
-  constructor() {
+  constructor(
+    private svPuntaje: ScoreboardsService,
+    private svAuth: AuthService,
+  ) {
     this.iniciarJuego();
   }
 
@@ -87,6 +92,11 @@ export class AhorcadoComponent {
   }
 
   reiniciarJuego() {
+    this.svPuntaje.GuardarPuntaje(
+      this.svAuth.getCurrentUser() ?? 'Usuario anonimo',
+      'Ahorcado',
+      this.puntos,
+    );
     this.iniciarJuego();
     this.maxIntentos = 5;
   }

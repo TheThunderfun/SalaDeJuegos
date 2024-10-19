@@ -30,6 +30,16 @@
     <button (click)="goToAbout()" class="nav-btn btn btn-primary btn-sm mx-2">
       Acerca de mi
     </button>
+
+    <div class="ml-auto d-flex align-items-">
+      <button
+        (click)="goToScoreboard()"
+        class="nav-btn btn btn-primary btn-sm mx-2"
+      >
+        Puntajes
+      </button>
+    </div>
+
     <div class="profileComboBox justify-content-end" *ngIf="!isLoggedOut">
       <select
         (change)="mostrarPerfil($event)"
@@ -46,4 +56,12 @@
       </select>
     </div>
   </nav>
+  <div class="ml-auto d-flex" style="position: absolute; right: 0">
+    <button
+      (click)="goToEncuesta()"
+      class="nav-btn btn btn-primary btn-sm mx-2"
+    >
+      Encuesta
+    </button>
+  </div>
 </header>

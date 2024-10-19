@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { PreguntadosService } from '../../Servicios/preguntados.service';
+import { ScoreboardsService } from '../../Servicios/scoreboards.service';
+import { AuthService } from '../../Servicios/auth.service';
 
 @Component({
   selector: 'app-preguntados',
@@ -13,7 +15,11 @@ export class PreguntadosComponent {
   mensaje: string = '';
   vidas: number = 3;
 
-  constructor(private preguntadosService: PreguntadosService) {}
+  constructor(
+    private preguntadosService: PreguntadosService,
+    private svPuntaje: ScoreboardsService,
+    private svAuth: AuthService,
+  ) {}
 
   ngOnInit(): void {
     this.obtenerPersonaje();
@@ -68,6 +74,11 @@ export class PreguntadosComponent {
   }
 
   reiniciarJuego() {
+    this.svPuntaje.GuardarPuntaje(
+      this.svAuth.getCurrentUser() ?? 'Usuario anonimo',
+      'Preguntados',
+      this.puntaje,
+    );
     this.puntaje = 0;
     this.vidas = 3;
   }

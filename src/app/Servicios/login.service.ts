@@ -42,14 +42,12 @@ export class LoginService {
             );
           case 'auth/operation-not-allowed':
             return Promise.reject(
-              'Este método de autenticación no está habilitado. Verifica la configuración en Firebase.',
+              'Este método de autenticación no está habilitado. ',
             );
           case 'auth/too-many-requests':
             return Promise.reject('Demasiadas solicitudes. Intenta más tarde.');
           case 'auth/user-disabled':
-            return Promise.reject(
-              'Este usuario ha sido deshabilitado. Comuníquese con el soporte.',
-            );
+            return Promise.reject('Este usuario ha sido deshabilitado. ');
           default:
             return Promise.reject('Error desconocido: ' + error.message);
         }

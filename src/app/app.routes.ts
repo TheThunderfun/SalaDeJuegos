@@ -7,6 +7,8 @@ import { PageNotFoundComponent } from './componentes/page-not-found/page-not-fou
 import { RegistroComponent } from './componentes/registro/registro.component';
 import { ChatComponent } from './componentes/chat/chat.component';
 import { noAuthGuard } from './Guard/no-auth-guard.guard';
+import { ScoreboardComponent } from './componentes/scoreboard/scoreboard.component';
+import { EncuestaComponent } from './componentes/encuesta/encuesta.component';
 
 export const routes: Routes = [
   // Si le ponemos 'prefix' nos va a arrojar un error en la consola de redireccion infinita
@@ -24,6 +26,14 @@ export const routes: Routes = [
     path: 'juegos',
     loadChildren: () =>
       import('./Modulos/juegos.module').then((m) => m.JuegosModule),
+  },
+  {
+    path: 'scoreboard',
+    component: ScoreboardComponent,
+  },
+  {
+    path: 'encuesta',
+    component: EncuestaComponent,
   },
   // La ruta comodin debe ir siempre al final
   { path: '**', component: PageNotFoundComponent },

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import Swal from 'sweetalert2';
+import { ScoreboardsService } from '../../Servicios/scoreboards.service';
+import { AuthService } from '../../Servicios/auth.service';
 
 @Component({
   selector: 'app-tiro-al-blanco',
@@ -7,7 +9,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./tiro-al-blanco.component.scss'],
 })
 export class TiroAlBlancoComponent {
-  score: number = 0;
+  puntaje: number = 0;
   targets: any[] = [];
   gameInterval: any;
   timerInterval: any;
@@ -18,9 +20,13 @@ export class TiroAlBlancoComponent {
   tiempoRestante: number = this.tiempoLimite;
   aparicion: number = 2000;
 
+  constructor(
+    private svPuntaje: ScoreboardsService,
+    private svAuth: AuthService,
+  ) {}
   startGame() {
     if (this.empezo === false) {
-      this.score = 0;
+      this.puntaje = 0;
       this.targets = [];
       this.tiempoRestante = this.tiempoLimite; // Reiniciar el tiempo restante
       this.gameInterval = setInterval(() => this.generateTarget(), 1000);
@@ -42,13 +48,18 @@ export class TiroAlBlancoComponent {
     clearInterval(this.gameInterval); // Detener el intervalo de generación de objetivos
     clearInterval(this.timerInterval); // Detener el temporizador
     this.empezo = false; // Reiniciar el estado del juego
-  
-    console.log(`Juego terminado. Puntaje final: ${this.score}`);
+
+    console.log(`Juego terminado. Puntaje final: ${this.puntaje}`);
     this.showAlert(
       'Puntaje',
       'Aceptar',
-      `El puntaje fue: ${this.score}`,
+      `El puntaje fue: ${this.puntaje}`,
       'success',
+    );
+    this.svPuntaje.GuardarPuntaje(
+      this.svAuth.getCurrentUser() ?? 'Usuario anonimo',
+      'Tiro al Blanco',
+      this.puntaje,
     );
   }
 
@@ -85,7 +96,7 @@ export class TiroAlBlancoComponent {
   }
 
   shootTarget(target: any) {
-    this.score++;
+    this.puntaje++;
     const index = this.targets.indexOf(target);
     if (index !== -1) {
       this.targets.splice(index, 1);

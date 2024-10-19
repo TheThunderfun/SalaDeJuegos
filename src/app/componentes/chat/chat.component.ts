@@ -34,10 +34,15 @@ export class ChatComponent implements OnInit {
 
   enviarMensaje() {
     const currentUser = this.authService.getCurrentUser();
-    const userMail = currentUser?.email;
-    if (this.nuevoMensaje.trim() && userMail) {
-      this.chatService.enviarMensaje(userMail, this.nuevoMensaje);
+    if (this.nuevoMensaje.trim() && currentUser != null) {
+      this.chatService.enviarMensaje(currentUser, this.nuevoMensaje);
       this.nuevoMensaje = '';
+    } else if (!currentUser) {
+      console.error(
+        'Error: No se puede enviar el mensaje porque el usuario no está autenticado.',
+      );
+    } else if (!this.nuevoMensaje.trim()) {
+      console.error('Error: El mensaje no puede estar vacío.');
     }
   }
 }

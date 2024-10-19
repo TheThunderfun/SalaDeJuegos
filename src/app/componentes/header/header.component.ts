@@ -17,12 +17,12 @@ export class HeaderComponent implements OnInit {
   user: any = null;
   isLoggedOut: boolean = true;
 
-
-  constructor(private router: Router, public auth: Auth) {}
+  constructor(
+    private router: Router,
+    public auth: Auth,
+  ) {}
 
   ngOnInit() {
-
-
     this.auth.onAuthStateChanged((user) => {
       if (user) {
         this.user = user;
@@ -72,5 +72,13 @@ export class HeaderComponent implements OnInit {
       .catch((error) => {
         console.error('Error al cerrar sesión:', error);
       });
+  }
+
+  goToScoreboard() {
+    this.router.navigate(['/scoreboard']);
+  }
+
+  goToEncuesta() {
+    this.router.navigate(['/encuesta']);
   }
 }

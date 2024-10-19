@@ -1,0 +1,63 @@
+<div class="container text-center my-4">
+  <!-- Botones -->
+  <div class="botones-container text-center">
+    <button class="btn btn-primary m-2" (click)="cargarMejoresPuntajes()">
+      Mejores Puntajes
+    </button>
+    <button class="btn btn-secondary m-2" (click)="cargarPuntajesUsuario()">
+      Puntajes del Usuario
+    </button>
+  </div>
+
+  <!-- Tabla Mejores Puntajes -->
+  <div *ngIf="mostrarMejoresPuntajes" class="table-responsive">
+    <h1 class="titulo text-center">Mejores Puntajes</h1>
+    <div class="scrollable-table">
+      <table class="table ">
+        <thead class="thead-dark">
+          <tr>
+            <th>Usuario</th>
+            <th>Tiro al Blanco</th>
+            <th>Ahorcado</th>
+            <th>Mayor o Menor</th>
+            <th>Preguntados</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let puntaje of tablaMejoresPuntajes">
+            <td>{{ puntaje.user }}</td>
+            <td>{{ puntaje["Tiro al Blanco"] || 0 }}</td>
+            <td>{{ puntaje["Ahorcado"] || 0 }}</td>
+            <td>{{ puntaje["Mayor-menor"] || 0 }}</td>
+            <td>{{ puntaje["Preguntados"] || 0 }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Tabla Puntajes del Usuario -->
+  <div *ngIf="!mostrarMejoresPuntajes" class="table-responsive">
+    <h1 class="titulo text-center">Puntajes del Usuario</h1>
+    <div class="scrollable-table">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>Usuario</th>
+            <th>Juego</th>
+            <th>Puntaje</th>
+            <th>Fecha</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let puntaje of tablaPuntajesUsuario">
+            <td>{{ puntaje.user }}</td>
+            <td>{{ puntaje.juego }}</td>
+            <td>{{ puntaje.puntaje }}</td>
+            <td>{{ puntaje.fecha }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
