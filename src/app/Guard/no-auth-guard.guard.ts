@@ -1,18 +1,19 @@
+import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { AuthService } from '../Servicios/auth.service';
-import { inject } from '@angular/core';
 
 export const noAuthGuard: CanActivateFn = (route, state) => {
   const auth = inject(AuthService);
   const router = inject(Router);
 
-  const user = auth.getCurrentUser() || 'No disponible';
+  const user = auth.getCurrentUser();
 
-  if (auth.getCurrentUser() != 'No disponible') {
-    console.log(auth.getCurrentUser());
+  if (user) {
+    console.log('Usuario autenticado:', user);
     router.navigate(['/home']);
-    return false;
+    return false; // Bloquea el acceso a la ruta protegida
   } else {
-    return true;
+    console.log('Usuario no autenticado');
+    return true; // Permite el acceso a la ruta
   }
 };
