@@ -1,19 +1,27 @@
-import { inject } from '@angular/core';
-import { CanActivateFn, Router } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { CanActivate, Router } from '@angular/router';
 import { AuthService } from '../Servicios/auth.service';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-export const noAuthGuard: CanActivateFn = (route, state) => {
-  const auth = inject(AuthService);
-  const router = inject(Router);
+@Injectable({
+  providedIn: 'root',
+})
+export class noAuthGuard implements CanActivate {
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+  ) {}
 
-  const user = auth.getCurrentUser();
-
-  if (user) {
-    console.log('Usuario autenticado:', user);
-    router.navigate(['/home']);
-    return false; // Bloquea el acceso a la ruta protegida
-  } else {
-    console.log('Usuario no autenticado');
-    return true; // Permite el acceso a la ruta
+  canActivate(): Observable<boolean> {
+    return this.authService.isLoggedIn().pipe(
+      map((isLoggedIn) => {
+        if (isLoggedIn) {
+          this.router.navigate(['/home']); // Redirige a la página de inicio si está logueado
+          return false; // Deniega el acceso
+        }
+        return true; // Permite el acceso
+      }),
+    );
   }
-};
+}

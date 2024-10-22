@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { onAuthStateChanged } from 'firebase/auth';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
@@ -12,9 +13,9 @@ export class AuthService {
   constructor(private auth: Auth) {
     onAuthStateChanged(this.auth, (user) => {
       if (user) {
-        this.userSubject.next(user); 
+        this.userSubject.next(user);
       } else {
-        this.userSubject.next(null); 
+        this.userSubject.next(null);
       }
     });
   }
@@ -23,12 +24,12 @@ export class AuthService {
     return this.auth.currentUser?.email;
   }
 
-  isLoggedIn(): boolean {
-    const user = this.auth.currentUser;
-    if (user) {
-      return true;
-    } else {
-      return false;
-    }
+  isLoggedIn(): Observable<boolean> {
+    return new Observable<boolean>((observer) => {
+      onAuthStateChanged(this.auth, (user) => {
+        observer.next(!!user); // Emit true if user exists, otherwise false
+        observer.complete();
+      });
+    });
   }
 }

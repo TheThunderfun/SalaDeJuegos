@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DatePipe } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Auth } from '@angular/fire/auth';
-import { onAuthStateChanged } from 'firebase/auth';
 import { AuthService } from '../../Servicios/auth.service';
 import { Router } from '@angular/router';
 import { ChatService } from '../../Servicios/chat.service';
