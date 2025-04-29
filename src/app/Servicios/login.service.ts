@@ -16,10 +16,12 @@ export class LoginService {
     private firestore: Firestore,
   ) {}
 
+  logged: boolean = false;
+
   signIn(email: string, password: string): Promise<UserCredential | string> {
     return signInWithEmailAndPassword(this.auth, email, password)
       .then((userCredential) => {
-        this.Log(email);
+        this.logged = true;
         return userCredential;
       })
       .catch((error) => {
@@ -48,6 +50,10 @@ export class LoginService {
             return Promise.reject('Demasiadas solicitudes. Intenta más tarde.');
           case 'auth/user-disabled':
             return Promise.reject('Este usuario ha sido deshabilitado. ');
+          case 'auth/invalid-credential':
+            return Promise.reject(
+              'Las credenciales proporcionadas son inválidas. Verifica tu información.',
+            );
           default:
             return Promise.reject('Error desconocido: ' + error.message);
         }
@@ -61,8 +67,14 @@ export class LoginService {
       })
       .catch((error) => {
         switch (error.code) {
+          case 'auth/missing-email':
+            return Promise.reject('El correo electrónico es obligatorio.');
+          case 'auth/missing-password':
+            return Promise.reject('La contraseña es obligatoria.');
           case 'auth/weak-password':
-            return Promise.reject('Contraseña demasiado corta.');
+            return Promise.reject(
+              'Contraseña demasiado corta, debe tener al menos 6 caracteres.',
+            );
           case 'auth/user-not-found':
             return Promise.reject('Usuario no encontrado.');
           case 'auth/invalid-email':
@@ -77,6 +89,11 @@ export class LoginService {
 
   signOut() {
     this.auth.signOut();
+    this.logged = false;
+  }
+
+  isLoggedIn() {
+    return this.logged;
   }
 
   Log(email: string) {
